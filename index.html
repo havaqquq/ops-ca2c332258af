@@ -197,7 +197,7 @@
           <button class="btn danger" id="resetQuestions" type="button">질문 초기화</button>
         </div>
       </div>
-      <p class="section-note">질문지는 하박국이 확정한 뒤 이곳에 올립니다. 그 전에는 비어 있습니다.</p>
+      <p class="section-note">질문 26개 · 현장에서 15~18개 소화 목표. 흐름에 따라 빼고 더하며, 변경 내용은 이 브라우저에 자동 저장됩니다. ‘장미가 남은 이유’(11–17)는 21시 전후, 장미 씨 동의 범위 안에서. 멤버마다 패스 카드 2장.</p>
       <div class="question-empty" id="questionEmpty">등록된 질문이 없습니다.</div>
       <div class="questions" id="questionList"></div>
     </section>
@@ -218,7 +218,8 @@
 (() => {
   const STORE = 'lovers-side-b-v1';
   const CHECKLIST_VERSION = '2026-11-12-side-b-v2';
-  const defaultQuestions = [];
+  const QUESTIONS_VERSION = '2026-11-12-q26';
+  const defaultQuestions = [{"text": "오늘 건배사는 한 명씩 한마디씩 해볼까요? (오프닝 숏 · 싱크 포인트)", "target": "전체", "block": "건배·근황"}, {"text": "앨범 나오고 한 달, 쇼케이스까지 끝났어요. 지금 기분은 ‘해방’에 가까워요, ‘허무’에 가까워요?", "target": "전체", "block": "건배·근황"}, {"text": "《연인들》 나오고 주변에서 들은 반응 중에 제일 웃기거나 당황스러웠던 말은 뭐였어요? 가족·친구·동료 누구든.", "target": "전체", "block": "건배·근황"}, {"text": "오늘도 공연 끝나고 바로 왔잖아요. 평소에 공연 끝나면 이 밴드는 보통 뭐 해요?", "target": "전체", "block": "건배·근황"}, {"text": "처음 만났을 때 인상이랑 지금 인상이 제일 다른 멤버는 누구예요? (돌아가며 한 명씩 지목)", "target": "전체", "block": "서로에 대해"}, {"text": "휴대폰에 서로 이름이 어떻게 저장돼 있어요? 지금 바로 보여줄 수 있어요? (거부하면 넘어감)", "target": "전체", "block": "서로에 대해"}, {"text": "단체방 말고, 따로 연락을 제일 자주 하는 두 사람은 누구예요? 무슨 얘기 해요?", "target": "전체", "block": "서로에 대해"}, {"text": "‘단편선 사용설명서’를 써본다면요? 네 멤버가 단편선 다룰 때 주의할 점 한 줄씩. → 이번엔 단편선이 멤버 네 명의 사용설명서를 한 줄씩.", "target": "전체", "block": "서로에 대해"}, {"text": "SIDE A에서 ‘별로 싸운 적 없다’고 했는데요. 싸우진 않았어도 속으로 ‘아, 이건 좀…’ 했던 순간 하나만요.", "target": "전체", "block": "서로에 대해"}, {"text": "공연 다니면서 생긴 일 중에 아직 어디서도 말 안 한 에피소드 하나 있어요?", "target": "전체", "block": "서로에 대해"}, {"text": "장미 씨는 예전 인터뷰에서 ‘좋은 밴드도 갑자기 깨질 수 있어서 경계한다’고 했죠. 그런데 공연 멘트로 실제로 그만둘 생각까지 했다고 얘기했잖아요. 말할 수 있는 만큼만, 그때 어떤 상태였어요?", "target": "박장미", "block": "장미가 남은 이유"}, {"text": "그 얘기를 처음 꺼낸 사람이 단편선이었어요? 어떻게 꺼냈는지 기억나요? → 단편선은 그날을 어떻게 기억하는지.", "target": "박장미", "block": "장미가 남은 이유"}, {"text": "단편선 씨는 ‘친구로서는 그만두는 게 맞고, 멤버로서는 같이 해줬으면 좋겠다’고 했다고요. 그 두 마음이 한꺼번에 들었을 때 어땠어요? → 둘 중 하나만 말할 수도 있었잖아요.", "target": "단편선", "block": "장미가 남은 이유"}, {"text": "장미 씨는 그 말을 들었을 때 어느 쪽이 더 크게 들렸어요? ‘친구’ 쪽이에요, ‘멤버’ 쪽이에요? → 결국 남기로 한 결정적인 이유는 뭐였어요?", "target": "박장미", "block": "장미가 남은 이유"}, {"text": "그 이야기를 무대 위에서, 관객 앞에서 멘트로 하기로 한 건 누구 생각이었어요? 왜 굳이 무대에서 말하고 싶었어요? → 보람·현우·재준: 같은 무대에서 그 멘트를 들을 때 어땠어요?", "target": "박장미", "block": "장미가 남은 이유"}, {"text": "멘트를 하고 나서 다시 연주로 돌아갔을 때는 어땠어요? 관객 반응 중에 기억나는 게 있어요? → 다른 멤버가 본 그날의 장미.", "target": "박장미", "block": "장미가 남은 이유"}, {"text": "지금은 그때와 뭐가 달라졌어요? 혹시 또 누군가에게 그런 순간이 오면, 이 팀이 서로에게 해줬으면 하는 건 뭐예요?", "target": "전체", "block": "장미가 남은 이유"}, {"text": "《연인들》을 만들고 나서 ‘연인’이라는 말을 들으면 떠오르는 사람이나 장면이 있어요? 꼭 연애 상대가 아니어도 돼요.", "target": "전체", "block": "각자의 연인들"}, {"text": "SIDE A에서는 ‘역겹고 사랑스러운 인간’을 앨범 이야기로 했잖아요. 이번엔 자기 이야기로요. 내가 아는 나의 역겨운 면 하나. → 오른쪽 사람이 그 사람의 사랑스러운 면 하나를 대신.", "target": "전체", "block": "각자의 연인들"}, {"text": "가까워질수록 오히려 흐려진 관계를 실제로 겪어본 적 있어요? (실명은 말하지 않아도 됨)", "target": "전체", "block": "각자의 연인들"}, {"text": "앨범 가사 중에 남 얘기인 줄 알았는데 연주하다가 내 얘기처럼 찔린 구절이 있어요?", "target": "전체", "block": "각자의 연인들"}, {"text": "20대에 사랑하던 방식이랑 지금 사랑하는 방식, 제일 달라진 게 뭐예요?", "target": "전체", "block": "각자의 연인들"}, {"text": "이번 앨범 하는 동안 ‘진짜 그만할까’ 싶었던 밤이 있었어요? 그날 뭐가 붙잡았어요? (장미 블록을 썼으면 장미 제외 또는 생략)", "target": "전체", "block": "계속 음악 하기"}, {"text": "음악 안 했으면 지금 뭐 하고 있을 것 같아요? 본인 말고 옆 사람이 대신 대답해주세요.", "target": "전체", "block": "계속 음악 하기"}, {"text": "SIDE A 끝에서 3집 얘기가 나왔어요. 3집은 어떤 관계에 관한 앨범이 될 것 같아요? → 10년 뒤에도 이 다섯 명이 같이 하고 있을까요?", "target": "전체", "block": "계속 음악 하기"}, {"text": "마지막으로, 이 자리에 있는 누군가에게 평소엔 안 하는 말 한마디 하고 건배할까요?", "target": "전체", "block": "마지막 건배"}];
   const checklist = ["대관 확정 · 출입 가능 시각과 퇴실 시각 확인", "공간 전기·실내 조명 작동 여부 확인 (영업 종료 공간)", "난로·온풍기 유무 확인 · 팬 소음 체크", "주차·화장실·쓰레기 처리 방법 확인", "멤버 도착 시각 공지 (앞 공연 종료 시각 반영)", "술·안주·잔 준비 주체와 비용 정리", "술병 라벨이 정면으로 잡히지 않게 배치", "테이블 배치 · 카메라를 등지는 자리 없음", "A6700: 4K 24p · S-Log3 · 1/50 · 고정 WB · 15mm 수동 초점", "Pocket 4P: 4K 24p · D-Log M · 짐벌 잠금 · 얼굴 추적 끄기", "Action 6: 4K 24p · D-Log M · f/2.0 · Dewarp · microSD 장착", "Action 4: 4K 24p · D-Log M · Dewarp · microSD 장착", "4대 모두 같은 Kelvin WB · 24fps 확인", "4대 모두 USB-C 연속 전원 연결 · 케이블 빠짐 방지", "카메라별 메모리 포맷 · 잔여 시간 2시간 30분 이상", "액션캠 2대 30분 연속 녹화 발열 테스트", "G60 반사광 세팅 · 얼굴 직광 없음 · 플리커 확인", "송신기 5대 완충 · 각 송신기에 멤버 이름표 · 펌웨어 업데이트", "Mini 2S 수신기에 Mini 2S 2대 + Mic Mini 2대 연결 · Q 모드 · Sony 어댑터 · A6700 CH1–4 확인", "Mini 2S 2대 + Mic 3 1대 내부 32-bit float ON · 녹음 표시 확인", "송신기 번호 이름표 · 착석 후 자리·번호 사진", "한 명씩 말해 보고 A6700 4트랙 + Mic 3 파일 확인 · 피크 -12dB 전후", "잔 부딪히는 소리·옷 마찰 확인 · 테이블 천","iPhone 하박국 자리 앞 녹음 시작 · 비행기 모드","촬영 중 Mic Mini 2대 수신 끊김 수시 확인 (내부 녹음 없음)", "전 카메라 동시 녹화 → 첫 건배로 싱크", "질문 카드·패스 카드·펜 준비 (사용 시)", "타로덱·시집 등 소품 준비 (사용 시)", "촬영 전 고지: 공개 전 멤버별 발언 확인 절차", "녹화 종료 시 “카메라 끕니다” 명확히 알리기", "종료 후 4대 클립 재생 · 오디오 파일 수 확인", "원상복구 · 쓰레기 정리 · 공간 사진"];
   let state = load();
   function load(){
@@ -227,10 +228,11 @@
       if(saved){
         const parsed=Object.assign({checked:{},questions:[],notes:'',checklistVersion:''},JSON.parse(saved));
         if(parsed.checklistVersion!==CHECKLIST_VERSION){parsed.checked={};parsed.checklistVersion=CHECKLIST_VERSION}
+        if(parsed.questionsVersion!==QUESTIONS_VERSION){parsed.questions=defaultQuestions.map(q=>({...q}));parsed.questionsVersion=QUESTIONS_VERSION}
         return parsed;
       }
     }catch(e){}
-    return {checked:{},questions:defaultQuestions.map(q=>({...q})),notes:'',checklistVersion:CHECKLIST_VERSION};
+    return {checked:{},questions:defaultQuestions.map(q=>({...q})),notes:'',checklistVersion:CHECKLIST_VERSION,questionsVersion:QUESTIONS_VERSION};
   }
   function save(){ localStorage.setItem(STORE,JSON.stringify(state)); }
   save();
@@ -255,7 +257,7 @@
       text.addEventListener('input',()=>{q.text=text.value;save()});
       const meta=document.createElement('div'); meta.className='qmeta';
       const target=document.createElement('select'); target.className='qtag'; ['전체','송현우','이보람','단편선','박장미','박재준'].forEach(v=>{const o=document.createElement('option');o.value=o.textContent=v;target.append(o)}); target.value=q.target||'전체'; target.addEventListener('change',()=>{q.target=target.value;save()});
-      const block=document.createElement('select'); block.className='qtag'; ['건배·근황','서로에 대해','각자의 연인들','계속 음악 하기','마지막 건배','장치·게임'].forEach(v=>{const o=document.createElement('option');o.value=o.textContent=v;block.append(o)}); block.value=q.block||'건배·근황'; block.addEventListener('change',()=>{q.block=block.value;save()});
+      const block=document.createElement('select'); block.className='qtag'; ['건배·근황','서로에 대해','장미가 남은 이유','각자의 연인들','계속 음악 하기','마지막 건배','장치·게임'].forEach(v=>{const o=document.createElement('option');o.value=o.textContent=v;block.append(o)}); block.value=q.block||'건배·근황'; block.addEventListener('change',()=>{q.block=block.value;save()});
       meta.append(target,block); body.append(text,meta);
       const del=document.createElement('button'); del.className='qdel'; del.type='button'; del.setAttribute('aria-label',`${i+1}번 질문 삭제`); del.textContent='×'; del.addEventListener('click',()=>{state.questions.splice(i,1);save();renderQuestions()});
       row.append(num,body,del); list.append(row);
